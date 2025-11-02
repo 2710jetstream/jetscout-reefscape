@@ -34,9 +34,9 @@ jobs:
         run: npm ci
       
       - name: Build
-        run: npm run build
-        env:
-          VITE_CONVEX_URL: ${{ secrets.VITE_CONVEX_URL }}
+        run: |
+          echo "VITE_CONVEX_URL=https://clever-dachshund-223.convex.cloud" > .env.production
+          npm run build
       
       - name: Setup Pages
         uses: actions/configure-pages@v4

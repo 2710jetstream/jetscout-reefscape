@@ -1,4 +1,5 @@
 import { Authenticated, Unauthenticated, useQuery } from "convex/react";
+import { Suspense } from "react";
 import { api } from "../convex/_generated/api";
 import { SignInForm } from "./SignInForm";
 import { SignOutButton } from "./SignOutButton";
@@ -14,7 +15,12 @@ export default function App() {
   const [currentPage, setCurrentPage] = useState<Page>("scout");
 
   return (
-    <div className={`min-h-screen ${darkMode ? 'dark' : ''}`}>
+    <Suspense fallback={
+      <div className="flex justify-center items-center min-h-screen">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-600"></div>
+      </div>
+    }>
+      <div className={`min-h-screen ${darkMode ? 'dark' : ''}`}>
       <div className="min-h-screen bg-gray-100 dark:bg-gray-900 transition-colors">
         <header className="sticky top-0 z-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700 shadow-sm">
           <div className="max-w-7xl mx-auto px-4 h-16 flex justify-between items-center">
@@ -40,6 +46,7 @@ export default function App() {
         <Toaster />
       </div>
     </div>
+    </Suspense>
   );
 }
 
