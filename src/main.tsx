@@ -5,18 +5,17 @@ import "./index.css";
 import App from "./App";
 
 const convexUrl = import.meta.env.VITE_CONVEX_URL;
-console.log('Convex URL:', convexUrl); // Debug log
+const deployKey = import.meta.env.VITE_CONVEX_DEPLOY_KEY;
 
+console.log('Convex URL:', convexUrl); // Debug log
 if (!convexUrl) {
   throw new Error('VITE_CONVEX_URL is not defined! Check your environment variables.');
 }
 
 const convex = new ConvexReactClient(convexUrl);
 
-// Add error handling for Convex client
-convex.onError((error) => {
-  console.error('Convex client error:', error);
-});
+// Add Convex debug logging
+console.log('Initializing Convex with deployment key:', deployKey);
 
 const root = createRoot(document.getElementById("root")!);
 

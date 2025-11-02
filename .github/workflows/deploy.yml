@@ -36,6 +36,7 @@ jobs:
       - name: Build
         run: |
           echo "VITE_CONVEX_URL=https://clever-dachshund-223.convex.cloud" > .env.production
+          echo "VITE_CONVEX_DEPLOY_KEY=prod:clever-dachshund-223|eyJ2MiI6IjZlNDAwNjc0YmFkNDQyOWU5MGU3NjY3YWYwYzAxN2M4In0=" >> .env.production
           npm run build
       
       - name: Setup Pages
